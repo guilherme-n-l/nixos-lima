@@ -42,7 +42,7 @@ nixos-rebuild switch --flake .#nixos --use-remote-sudo
 
 ```bash
 # on host machine
-limactl edit --memory 8 <PATH_TO_VM_CONFIG>/<FILE>.yaml
+limactl edit --memory 8 ~/.lima/<YOUR_LIMA_VM_NAME>/lima.yaml # Use `limactl list` to find YOUR_LIMA_VM_NAME (e.g., default)
 ```
 
 - Make sure you have enough space in `/tmp` directory to build the image
