@@ -1,3 +1,8 @@
+# Dependencies
+
+- [Lima](https://lima-vm.io/)
+- [QEMU](https://www.qemu.org/)
+
 # Run NixOS on a Lima VM
 Heavily inspired from [patryk4815/ctftools](https://github.com/patryk4815/ctftools/tree/master/lima-vm)
 
