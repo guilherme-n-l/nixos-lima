@@ -11,7 +11,9 @@ sh <(curl -L https://nixos.org/nix/install) --daemon
 echo "system-features = nixos-test benchmark big-parallel kvm" >> /etc/nix/nix.conf
 reboot
 
-# build image
+# build image (inside cloned repo)
+git clone https://github.com/kasuboski/nixos-lima.git
+cd nixos-lima
 nix --extra-experimental-features nix-command --extra-experimental-features flakes build .#packages.aarch64-linux.img
 cp $(readlink result)/nixos.img /tmp/lima/nixos-aarch64.img
 ```
@@ -27,5 +29,21 @@ lima
 # switch to this repo directory
 nixos-rebuild switch --flake .#nixos --use-remote-sudo
 ```
+## Troubleshooting
 
+### Errors while building image
 
+- Make sure you have enough memory on builder VM
+
+```bash
+# on host machine
+limactl edit --memory 8 <PATH_TO_VM_CONFIG>/<FILE>.yaml
+```
+
+- Make sure you have enough space in `/tmp` directory to build the image
+
+```bash
+# inside lima VM
+df -h /tmp # Should be about 5GB or more
+mount -o remount,size=5G /tmp/
+```
