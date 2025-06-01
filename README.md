@@ -50,5 +50,5 @@ limactl edit --memory 8 <PATH_TO_VM_CONFIG>/<FILE>.yaml
 ```bash
 # inside lima VM
 df -h /tmp # Should be about 5GB or more
-mount -o remount,size=5G /tmp/
+sudo mount -o remount,size=5G /tmp/
 ```
